@@ -24,10 +24,11 @@ jobs:
         id: node_modules
         with:
           path: |
-            **/node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+            x-frontend/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('x-frontend/yarn.lock') }}-${{ steps.node.outputs.version }}
 
       - name: Install dependencies
+        working-directory: x-frontend
         run: yarn install
 
       - run: |
