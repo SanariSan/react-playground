@@ -1,5 +1,6 @@
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { HumanNeedsContextMemoized } from "./human-needs.context";
+import { log } from "log";
 
 export const HumanNeedsProviderMemoized = ({
   children,
@@ -13,7 +14,7 @@ export const HumanNeedsProviderMemoized = ({
   const mountedRef = useRef(false);
 
   const drink = useCallback(() => {
-    console.log("Drinking as a side effect...");
+    log("Drinking as a side effect...");
     setWaterL((waterL) => waterL - 1);
   }, []);
 
@@ -25,12 +26,12 @@ export const HumanNeedsProviderMemoized = ({
   const eat = useCallback((foodType: "salad" | "pasta") => {
     switch (foodType) {
       case "salad": {
-        console.log("eating 1kg of salad");
+        log("eating 1kg of salad");
         setSaladKg((saladKg) => saladKg - 1);
         break;
       }
       case "pasta": {
-        console.log("eating 1kg of pasta");
+        log("eating 1kg of pasta");
         setPastaKg((pastaKg) => pastaKg - 1);
         break;
       }
@@ -39,7 +40,7 @@ export const HumanNeedsProviderMemoized = ({
       }
     }
 
-    console.log("Don't forget to drink!");
+    log("Don't forget to drink!");
   }, []);
 
   useEffect(() => {

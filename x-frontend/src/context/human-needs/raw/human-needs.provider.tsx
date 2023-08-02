@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import { HumanNeedsContextRaw } from "./human-needs.context";
+import { log } from "log";
 
 export const HumanNeedsProviderRaw = ({
   children,
@@ -10,8 +11,10 @@ export const HumanNeedsProviderRaw = ({
   const [saladKg, setSaladKg] = useState(5);
   const [waterL, setWaterL] = useState(5);
 
+  // won't even work and trigger infinite loop from start
+
   // const drink = () => {
-  //   console.log("Drinking as a side effect...");
+  //   log("Drinking as a side effect...");
   //   setWaterL((waterL) => waterL - 1);
   // };
 
@@ -22,12 +25,12 @@ export const HumanNeedsProviderRaw = ({
   const eat = (foodType: "salad" | "pasta") => {
     switch (foodType) {
       case "salad": {
-        console.log("eating 1kg of salad");
+        log("eating 1kg of salad");
         setSaladKg((saladKg) => saladKg - 1);
         break;
       }
       case "pasta": {
-        console.log("eating 1kg of pasta");
+        log("eating 1kg of pasta");
         setPastaKg((pastaKg) => pastaKg - 1);
         break;
       }
@@ -36,7 +39,7 @@ export const HumanNeedsProviderRaw = ({
       }
     }
 
-    console.log("Don't forget to drink!");
+    log("Don't forget to drink!");
   };
 
   return (

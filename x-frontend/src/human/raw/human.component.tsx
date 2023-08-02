@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import { HumanNeedsContextRaw } from "context/human-needs/raw";
+import { log } from "log";
 import type { FC } from "react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 type THumanComponent = {
   [key: string]: unknown;
@@ -13,9 +14,8 @@ const statesOfTheDay: ["night", "morning", "evening"] = [
   "evening",
 ];
 
-let eatCounter = 0;
-
 export const HumanComponentRaw: FC<THumanComponent> = () => {
+  const eatCounter = useRef(0);
   const { saladKg, pastaKg, waterL, eat } = useContext(HumanNeedsContextRaw);
   const [stateOfTheDayIdx, setStateOfTheDayIdx] = useState(0);
   const stateOfTheDay = statesOfTheDay[stateOfTheDayIdx];
@@ -27,8 +27,8 @@ export const HumanComponentRaw: FC<THumanComponent> = () => {
   };
 
   useEffect(() => {
-    if (eatCounter >= 20) {
-      console.log("we are dead");
+    if (eatCounter.current >= 20) {
+      log("we are dead");
       return;
     }
 
@@ -40,7 +40,7 @@ export const HumanComponentRaw: FC<THumanComponent> = () => {
       // ... sleep ...
     }
 
-    eatCounter += 1;
+    eatCounter.current += 1;
   }, [stateOfTheDay, eat]);
 
   return (

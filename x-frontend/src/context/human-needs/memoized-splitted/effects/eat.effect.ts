@@ -1,3 +1,5 @@
+import { log } from "log";
+
 export const eatEffect =
   (
     setSaladKg: (value: React.SetStateAction<number>) => void,
@@ -6,12 +8,12 @@ export const eatEffect =
   (foodType: "salad" | "pasta") => {
     switch (foodType) {
       case "salad": {
-        console.log("eating 1kg of salad");
+        log("eating 1kg of salad");
         setSaladKg((saladKg) => saladKg - 1);
         break;
       }
       case "pasta": {
-        console.log("eating 1kg of pasta");
+        log("eating 1kg of pasta");
         setPastaKg((pastaKg) => pastaKg - 1);
         break;
       }
@@ -20,7 +22,7 @@ export const eatEffect =
       }
     }
 
-    console.log("Don't forget to drink!");
+    log("Don't forget to drink!");
   };
 
 type TEatEffect = typeof eatEffect;
