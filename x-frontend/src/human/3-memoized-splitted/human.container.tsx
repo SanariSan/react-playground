@@ -1,4 +1,4 @@
-import { HumanNeedsProviderMemoizedSplitted } from "context/human-needs/memoized-splitted";
+import { HumanNeedsProviderMemoizedSplitted } from "context/human-needs/3-memoized-splitted";
 import type { FC } from "react";
 import { HumanComponentMemoizedSplitted } from "./human.component";
 

@@ -1,4 +1,4 @@
-import { HumanNeedsProviderRaw } from "context/human-needs/raw";
+import { HumanNeedsProviderRaw } from "context/human-needs/1-raw";
 import type { FC } from "react";
 import { HumanComponentRaw } from "./human.component";
 

@@ -1,17 +1,18 @@
 import { Box } from "@mui/material";
-import { HumanContainerMemoized } from "human/memoized";
-import { HumanContainerMemoizedSplitted } from "human/memoized-splitted";
-import { HumanContainerRaw } from "human/raw";
-import s from "./app.module.scss";
 import { LogsComponent } from "Logs";
-import { useState } from "react";
+import { HumanContainerRaw } from "human/1-raw";
+import { HumanContainerMemoized } from "human/2-memoized";
+import { HumanContainerMemoizedSplitted } from "human/3-memoized-splitted";
+import { HumanContainerMemoizedReactive } from "human/4-memoized-reactive";
 import { clearLogs } from "log";
+import { useState } from "react";
+import s from "./app.module.scss";
 
 const examples = [
   <HumanContainerRaw />,
-
   <HumanContainerMemoized />,
   <HumanContainerMemoizedSplitted />,
+  <HumanContainerMemoizedReactive />,
 ];
 
 const App = () => {

@@ -15,8 +15,10 @@ type TLogsComponent = {
 export const LogsComponent: FC<TLogsComponent> = () => {
   const [logs, setLogs] = useState<unknown[]>([]);
 
+  // sub logs
   useEffect(() => {
     const cb = (...data: unknown[]) => {
+      data.forEach((_) => console.log(_));
       setLogs((prev) => [...prev, ...data]);
     };
 
@@ -27,6 +29,7 @@ export const LogsComponent: FC<TLogsComponent> = () => {
     };
   }, []);
 
+  // sub clear logs
   useEffect(() => {
     const cb = (...data: unknown[]) => {
       setLogs([]);
@@ -44,9 +47,10 @@ export const LogsComponent: FC<TLogsComponent> = () => {
       LOGS:
       <br />
       <textarea
+        readOnly
         value={JSON.stringify(logs, null, 2)}
         style={{ width: "100%", height: "100%" }}
-      ></textarea>
+      />
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { HumanNeedsContextMemoized } from "context/human-needs/memoized";
+import { HumanNeedsContextMemoizedSplitted } from "context/human-needs/3-memoized-splitted";
 import type { FC } from "react";
 import { useContext, useEffect, useState } from "react";
 
@@ -13,9 +13,9 @@ const statesOfTheDay: ["night", "morning", "evening"] = [
   "evening",
 ];
 
-export const HumanComponentMemoized: FC<THumanComponent> = () => {
+export const HumanComponentMemoizedSplitted: FC<THumanComponent> = () => {
   const { saladKg, pastaKg, waterL, eat } = useContext(
-    HumanNeedsContextMemoized
+    HumanNeedsContextMemoizedSplitted
   );
   const [stateOfTheDayIdx, setStateOfTheDayIdx] = useState(0);
   const stateOfTheDay = statesOfTheDay[stateOfTheDayIdx];
@@ -38,7 +38,7 @@ export const HumanComponentMemoized: FC<THumanComponent> = () => {
 
   return (
     <Box>
-      MEMO
+      MEMO-SPLITTED
       <br />
       {stateOfTheDay} | salad: {saladKg} | pasta: {pastaKg} | water: {waterL}
       <br />
